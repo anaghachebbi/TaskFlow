@@ -99,9 +99,6 @@ const updateProject = asyncHandler(async (req, res) => {
     user: req.user._id,
     project: projectID,
   });
-  if (!member || member.role != UserRolesEnum.ADMIN) {
-    throw new ApiError(403, "You are not authorised to update this project");
-  }
   const project = await Project.findByIdAndUpdate(
     projectID,
     {
@@ -128,9 +125,6 @@ const deleteProject = asyncHandler(async (req, res) => {
     user: req.user._id,
     project: projectId,
   });
-  if (!member || member.role != UserRolesEnum.ADMIN) {
-    throw new ApiError(403, "You are not authorised to delete the project");
-  }
   await Project.findByIdAndDelete(projectId);
   return res
     .status(200)
