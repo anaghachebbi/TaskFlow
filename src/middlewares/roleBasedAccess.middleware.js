@@ -1,6 +1,6 @@
-import { ApiError } from "../utils/api-error";
+import { ApiError } from "../utils/api-error.js";
 import { projectMember } from "../models/projectmember.models.js";
-import { asyncHandler } from "../utils/async-handler";
+import { asyncHandler } from "../utils/async-handler.js";
 import mongoose from "mongoose";
 const validateProjectPermission = (roles = []) =>
   asyncHandler(async (req, res, next) => {
